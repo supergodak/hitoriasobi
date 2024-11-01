@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ひとりあそび研究所</title>
+    <script>
+      window.DEBUG = true;
+      console.log('🎯 Debug mode enabled');
+      
+      window.addEventListener('error', function(event) {
+        console.error('🔥 Unhandled error:', event.error);
+      });
+
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('🔥 Unhandled promise rejection:', event.reason);
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('📑 DOM Content Loaded');
+        console.log('🔍 Root element:', document.getElementById('root'));
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('load', function() {
+        console.log('🏁 Window loaded');
+        
+        const root = document.getElementById('root');
+        console.log('🔍 Root element contents:', {
+          childNodes: root?.childNodes.length,
+          innerHTML: root?.innerHTML.slice(0, 100) + '...',
+          hasChildren: root?.hasChildNodes()
+        });
+      });
+    </script>
+  </body>
+</html>
